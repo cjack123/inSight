@@ -1,2 +1,2 @@
 # inSight
-A website that keep track of gift card balances. 
+A website that tracks gift card balances. 
