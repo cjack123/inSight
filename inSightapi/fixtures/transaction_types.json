@@ -1,0 +1,18 @@
+[
+    {
+        "model": "inSight.transactionType",
+        "pk": 1,
+        "fields": {
+            "type": "debit"
+
+        }
+    },
+    {
+        "model": "inSight.transactionType",
+        "pk": 1,
+        "fields": {
+            "type": "credit"
+
+        }
+    }
+]
