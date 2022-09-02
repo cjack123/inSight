@@ -1,17 +1,17 @@
 [
     {
-        "model": "inSight.transactionType",
+        "model": "inSightapi.transaction_type",
         "pk": 1,
         "fields": {
-            "type": "debit"
+            "type": "withdraw"
 
         }
     },
     {
-        "model": "inSight.transactionType",
+        "model": "inSightapi.transaction_type",
         "pk": 1,
         "fields": {
-            "type": "credit"
+            "type": "deposit"
 
         }
     }
