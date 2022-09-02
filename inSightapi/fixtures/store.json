@@ -1,0 +1,80 @@
+[
+    {
+        "model": "inSightapi.store",
+        "pk": 1,
+        "fields": {
+            "name": "Walmart"
+        }
+    },
+    {
+        "model": "inSightapi.store",
+        "pk": 2,
+        "fields": {
+            "name": "Costco Wholesale"
+        }
+    },
+    {
+        "model": "inSightapi.store",
+        "pk": 3,
+        "fields": {
+            "name": "Amazon.com"
+        }
+    },
+    {
+        "model": "inSightapi.store",
+        "pk": 4,
+        "fields": {
+            "name": "The Home Depot"
+        }
+    },
+    {
+        "model": "inSightapi.store",
+        "pk": 5,
+        "fields": {
+            "name": "The Kroger Co."
+        }
+    },
+    {
+        "model": "inSightapi.store",
+        "pk": 6,
+        "fields": {
+            "name": "Target"
+        }
+    },
+    {
+        "model": "inSightapi.store",
+        "pk": 7,
+        "fields": {
+            "name": "CVS Health Corporation"
+        }
+    },
+    {
+        "model": "inSightapi.store",
+        "pk": 8,
+        "fields": {
+            "name": "Apple Stores / iTunes"
+        }
+    },
+    {
+        "model": "inSightapi.store",
+        "pk": 9,
+        "fields": {
+            "name": "Publix Super Markets"
+        }
+    },
+    {
+        "model": "inSightapi.store",
+        "pk": 10,
+        "fields": {
+            "name": "Best Buy"
+        }
+    },
+    {
+        "model": "inSightapi.store",
+        "pk": 11,
+        "fields": {
+            "name": "Other"
+        }
+    }
+    
+]
