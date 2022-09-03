@@ -1,6 +1,6 @@
 [
     {
-        "model": "inSightapi.transaction_type",
+        "model": "inSightapi.transactionType",
         "pk": 1,
         "fields": {
             "type": "withdraw"
@@ -8,8 +8,8 @@
         }
     },
     {
-        "model": "inSightapi.transaction_type",
-        "pk": 1,
+        "model": "inSightapi.transactionType",
+        "pk": 2,
         "fields": {
             "type": "deposit"
 

@@ -1,11 +1,11 @@
 [
     {
-        "model": "inSightapi.card_holder",
+        "model": "inSightapi.cardHolder",
         "pk": 1,
         "fields": {
             "user": 1,
             "city": "Nashville",
-            "State": "TN",
+            "state": "TN",
             "zip": "37076"
         }
     }
