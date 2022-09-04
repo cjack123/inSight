@@ -30,6 +30,7 @@ router.register(r'tranactiontypes', TransactionTypeView, 'tranactiontype')
 router.register(r'stores', StoreView, 'store')
 router.register(r'cards', CardView, 'card')
 router.register(r'cardholders', CardHolderView, 'cardholder')
+router.register(r'transactions', TransactionView, 'transaction')
 
 
 urlpatterns = [
