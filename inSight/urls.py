@@ -34,7 +34,9 @@ router.register(r'transactions', TransactionView, 'transaction')
 
 
 urlpatterns = [
+    # Requests to https://localhost:8000/register will be routed to the register_user function
     path('register', register_user),
+    # Requests to http://localhost:8--/login will be routed to the login_user function
     path('login', login_user),
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
