@@ -15,9 +15,15 @@ class TransactionTypeView(ViewSet):
         Returns:
             Response -- JSON serialized game type
         """
-        transaction_type = TransactionType.objects.get(pk=pk)
-        serializer = TransactionTypeSerializer(transaction_type)
-        return Response(serializer.data)
+        # transaction_type = TransactionType.objects.get(pk=pk)
+        # serializer = TransactionTypeSerializer(transaction_type)
+        # return Response(serializer.data)
+        try:
+            transaction_type = TransactionType.objects.get(pk=pk)
+            serializer = TransactionTypeSerializer(transaction_type)
+            return Response(serializer.data)
+        except TransactionType.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND) 
         
 
     def list(self, request):
@@ -36,3 +42,5 @@ class TransactionTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = TransactionType
         fields = ('id', 'type')
+
+
