@@ -4,6 +4,10 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from inSightapi.models import Transactions
+from inSightapi.models import Card
+from inSightapi.models import TransactionType
+from inSightapi.models import CardHolder
+from inSightapi.models import Store
 
 
 class TransactionView(ViewSet):
@@ -45,10 +49,32 @@ class TransactionView(ViewSet):
         serializer = TransactionSerializer(transactions, many=True)
         return Response(serializer.data)
 
+    def create(self, request):
+        """Handle POST operations
+
+        Returns
+            Response -- JSON serialized transaction instance
+        """
+        card_holder = CardHolder.objects.get(user=request.auth.user)
+        transaction_type = TransactionType.objects.get(pk=request.data["transaction_type"])
+        card = Card.objects.get(pk=request.data["card"])
+        store = Store.objects.get(pk=request.data["store"])
+
+        transaction = Transactions.objects.create(
+            card=card,
+            card_holder=card_holder,
+            transaction_type=transaction_type,
+            store=store,
+            amount=request.data["amount"],
+            transaction_date=request.data["transaction_date"]
+        )
+        serializer = TransactionSerializer(transaction)
+        return Response(serializer.data)
+
     
 
 class TransactionSerializer(serializers.ModelSerializer):
-    """JSON serializer for game types
+    """JSON serializer for transactions
     """
     class Meta:
         model = Transactions
