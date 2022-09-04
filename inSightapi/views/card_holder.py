@@ -15,10 +15,16 @@ class CardHolderView(ViewSet):
         Returns:
             Response -- JSON serialized card holder
         """
-        card_holder = CardHolder.objects.get(pk=pk)
-        serializer = CardHolderSerializer(card_holder)
-        return Response(serializer.data)
-        
+        # card_holder = CardHolder.objects.get(pk=pk)
+        # serializer = CardHolderSerializer(card_holder)
+        # return Response(serializer.data)
+
+        try:
+            card_holder = CardHolder.objects.get(pk=pk)
+            serializer = CardHolderSerializer(card_holder)
+            return Response(serializer.data)
+        except CardHolder.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND) 
 
     def list(self, request):
         """Handle GET requests to get all card holders

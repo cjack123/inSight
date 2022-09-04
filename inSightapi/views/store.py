@@ -16,9 +16,15 @@ class StoreView(ViewSet):
             Response -- JSON serialized store
         """
 
-        store = Store.objects.get(pk=pk)
-        serializer = StoreSerializer(store)
-        return Response(serializer.data)
+        # store = Store.objects.get(pk=pk)
+        # serializer = StoreSerializer(store)
+        # return Response(serializer.data)
+        try:
+            store = Store.objects.get(pk=pk)
+            serializer = StoreSerializer(store)
+            return Response(serializer.data)
+        except Store.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND) 
         
 
     def list(self, request):
