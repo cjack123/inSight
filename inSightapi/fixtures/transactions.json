@@ -7,8 +7,21 @@
             "card_holder": 1,
             "transaction_type": 1,
             "amount": 5.00,
-            "transaction_date": "2028-04-01 12:12"
+            "transaction_date": "2022-09-01 12:12"
+
+        }
+    },
+    {
+        "model": "inSightapi.transactions",
+        "pk": 2,
+        "fields": {
+            "card": 2,
+            "card_holder": 1,
+            "transaction_type": 1,
+            "amount": 50.00,
+            "transaction_date": "2022-08-29 15:28"
 
         }
     }
+
 ]
