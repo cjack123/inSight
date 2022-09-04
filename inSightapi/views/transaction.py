@@ -74,7 +74,7 @@ class TransactionView(ViewSet):
     
 
 class TransactionSerializer(serializers.ModelSerializer):
-    """JSON serializer for game types
+    """JSON serializer for transactions
     """
     class Meta:
         model = Transactions

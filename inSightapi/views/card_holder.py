@@ -4,6 +4,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from inSightapi.models import CardHolder
+from django.contrib.auth.models import User
 
 
 class CardHolderView(ViewSet):
@@ -37,8 +38,9 @@ class CardHolderView(ViewSet):
         return Response(serializer.data)
 
 
+
 class CardHolderSerializer(serializers.ModelSerializer):
-    """JSON serializer for game types
+    """JSON serializer for card holders
     """
     class Meta:
         model = CardHolder
