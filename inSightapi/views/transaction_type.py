@@ -36,8 +36,9 @@ class TransactionTypeView(ViewSet):
         serializer = TransactionTypeSerializer(transaction_types, many=True)
         return Response(serializer.data)
 
+
 class TransactionTypeSerializer(serializers.ModelSerializer):
-    """JSON serializer for game types
+    """JSON serializer for transaction types
     """
     class Meta:
         model = TransactionType
