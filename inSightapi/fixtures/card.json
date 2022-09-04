@@ -12,5 +12,48 @@
             "current_balance": 1.00,
             "QRcode": "Stretch"
         }
+    },
+    {
+        "model": "inSightapi.card",
+        "pk": 2,
+        "fields": {
+            "cardholder": 1,
+            "card_number": 22346789012345,
+            "card_type": "Visa Vanilla",
+            "expiration_date": "2028-06-01",
+            "security_code": 211,
+            "start_balance": 100.00,
+            "current_balance": 50.00,
+            "QRcode": "Stretch"
+        }
+    },
+    {
+        "model": "inSightapi.card",
+        "pk": 3,
+        "fields": {
+            "cardholder": 1,
+            "card_number": 22346789012345,
+            "card_type": "Visa Vanilla",
+            "expiration_date": "2028-06-01",
+            "security_code": 311,
+            "start_balance": 70.00,
+            "current_balance": 50.00,
+            "QRcode": "Stretch"
+        }
+    },
+    {
+        "model": "inSightapi.card",
+        "pk": 4,
+        "fields": {
+            "cardholder": 1,
+            "card_number": 32346789012345,
+            "card_type": "Visa Vanilla",
+            "expiration_date": "2028-08-01",
+            "security_code": 311,
+            "start_balance": 70.00,
+            "current_balance": 16.25,
+            "QRcode": "Stretch"
+        }
     }
+
 ]

@@ -21,10 +21,11 @@ from inSightapi.views import register_user, login_user
 from rest_framework import routers
 from inSightapi.views import TransactionTypeView
 from inSightapi.views import StoreView
+from inSightapi.views import CardView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'tranactiontypes', TransactionTypeView, 'tranactiontype')
-router.register(r'stores', StoreView, 'store')
+router.register(r'cards', CardView, 'card')
 
 
 urlpatterns = [
