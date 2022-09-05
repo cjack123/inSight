@@ -45,18 +45,36 @@ class CardView(ViewSet):
         """
         cardholder = CardHolder.objects.get(user=request.auth.user)
 
-        card = Card.objects.create(
-            cardholder=cardholder,
-            card_number=request.data["card_number"],
-            card_type=request.data["card_type"],
-            expiration_date=request.data["expiration_date"],
-            security_code=request.data["security_code"],
-            start_balance=request.data["start_balance"],
-            current_balance=request.data["current_balance"],
-            QRcode=request.data["QRcode"],
-        )
-        serializer = CardSerializer(card)
-        return Response(serializer.data)
+        # card = Card.objects.create(
+        #     cardholder=cardholder,
+        #     card_number=request.data["card_number"],
+        #     card_type=request.data["card_type"],
+        #     expiration_date=request.data["expiration_date"],
+        #     security_code=request.data["security_code"],
+        #     start_balance=request.data["start_balance"],
+        #     current_balance=request.data["current_balance"],
+        #     QRcode=request.data["QRcode"],
+        # )
+        # serializer = CardSerializer(card)
+        # return Response(serializer.data)
+
+        serializer = CreateCardSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save(cardholder=cardholder)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+    def update(self, request, pk):
+        card = Card.objects.get(pk=pk)
+        serializer = CreateCardSerializer(card, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+    def destroy(self, request, pk):
+        card = Card.objects.get(pk=pk)
+        card.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+        
 
 class CardSerializer(serializers.ModelSerializer):
     """JSON serializer for card holders
@@ -64,4 +82,11 @@ class CardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Card
         fields = ('id', 'cardholder', 'card_number', 'card_type', 'expiration_date', 'security_code', 'start_balance', 'current_balance', 'QRcode')
-        depth = 1
+        # depth = 1
+
+class CreateCardSerializer(serializers.ModelSerializer):
+    """JSON serializer for card holders
+    """
+    class Meta:
+        model = Card
+        fields = ('id', 'cardholder', 'card_number', 'card_type', 'expiration_date', 'security_code', 'start_balance', 'current_balance', 'QRcode')
