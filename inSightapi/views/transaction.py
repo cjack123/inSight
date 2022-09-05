@@ -68,6 +68,7 @@ class TransactionView(ViewSet):
             amount=request.data["amount"],
             transaction_date=request.data["transaction_date"]
         )
+
         serializer = TransactionSerializer(transaction)
         return Response(serializer.data)
 
