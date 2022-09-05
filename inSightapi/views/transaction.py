@@ -1,4 +1,5 @@
 """View module for handling requests about transactions"""
+from django.core.exceptions import ValidationError
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
@@ -55,22 +56,27 @@ class TransactionView(ViewSet):
         Returns
             Response -- JSON serialized transaction instance
         """
-        card = Card.objects.get(pk=request.data["card"])
+        # card = Card.objects.get(pk=request.data["card"])
+        # card_holder = CardHolder.objects.get(user=request.auth.user)
+        # transaction_type = TransactionType.objects.get(pk=request.data["transaction_type"])
+        # store = Store.objects.get(pk=request.data["store"])
+
+        # transaction = Transactions.objects.create(
+        #     card=card,
+        #     card_holder=card_holder,
+        #     transaction_type=transaction_type,
+        #     store=store,
+        #     amount=request.data["amount"],
+        #     transaction_date=request.data["transaction_date"]
+        # )
+
+        # serializer = TransactionSerializer(transaction)
+        # return Response(serializer.data)
         card_holder = CardHolder.objects.get(user=request.auth.user)
-        transaction_type = TransactionType.objects.get(pk=request.data["transaction_type"])
-        store = Store.objects.get(pk=request.data["store"])
-
-        transaction = Transactions.objects.create(
-            card=card,
-            card_holder=card_holder,
-            transaction_type=transaction_type,
-            store=store,
-            amount=request.data["amount"],
-            transaction_date=request.data["transaction_date"]
-        )
-
-        serializer = TransactionSerializer(transaction)
-        return Response(serializer.data)
+        serializer = CreateTransactionSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save(card_holder=card_holder)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     
 
@@ -81,3 +87,10 @@ class TransactionSerializer(serializers.ModelSerializer):
         model = Transactions
         fields = ('id', 'card', 'card_holder', 'transaction_type', 'store', 'amount', 'transaction_date')
         depth = 2
+
+class CreateTransactionSerializer(serializers.ModelSerializer):
+    """JSON serializer for transactions
+    """
+    class Meta:
+        model = Transactions
+        fields = ('id', 'card', 'card_holder', 'transaction_type', 'store', 'amount', 'transaction_date')
