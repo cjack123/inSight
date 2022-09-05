@@ -78,6 +78,18 @@ class TransactionView(ViewSet):
         serializer.save(card_holder=card_holder)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+    def update(self, request, pk):
+        transaction = Transactions.objects.get(pk=pk)
+        serializer = CreateTransactionSerializer(transaction, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+    def destroy(self, request, pk):
+        transaction = Transactions.objects.get(pk=pk)
+        transaction.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
     
 
 class TransactionSerializer(serializers.ModelSerializer):
@@ -86,7 +98,7 @@ class TransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transactions
         fields = ('id', 'card', 'card_holder', 'transaction_type', 'store', 'amount', 'transaction_date')
-        depth = 2
+        # depth = 2
 
 class CreateTransactionSerializer(serializers.ModelSerializer):
     """JSON serializer for transactions
