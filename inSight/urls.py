@@ -25,8 +25,9 @@ from inSightapi.views import CardView
 from inSightapi.views import TransactionView
 from inSightapi.views import CardHolderView
 
+# routers
 router = routers.DefaultRouter(trailing_slash=False)
-router.register(r'transactiontypes', TransactionTypeView, 'transactiontype')
+router.register(r'types', TransactionTypeView, 'type')
 router.register(r'stores', StoreView, 'store')
 router.register(r'cards', CardView, 'card')
 router.register(r'cardholders', CardHolderView, 'cardholder')
