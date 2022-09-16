@@ -54,7 +54,7 @@ def register_user(request):
     )
 
     # Now save the extra info in the inSightapi_card_holder table
-    card_holder = card_holder.objects.create(
+    card_holder = CardHolder.objects.create(
         city=request.data['city'],
         state=request.data['state'],
         zip=request.data['zip'],

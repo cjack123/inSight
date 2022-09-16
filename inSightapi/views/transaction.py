@@ -43,7 +43,7 @@ class TransactionView(ViewSet):
         transactions = Transactions.objects.all()
 
         # Add in the next 3 lines
-        card = request.query_params.get('card', None)
+        card = request.query_params.get('cardId', None)
         if card is not None:
             transactions = transactions.filter(card_id=card)
 
@@ -97,12 +97,12 @@ class TransactionSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = Transactions
-        fields = ('id', 'card', 'card_holder', 'transaction_type', 'store', 'amount', 'transaction_date')
-        # depth = 2
+        fields = ('id', 'card', 'transaction_type', 'store', 'amount', 'transaction_date')
+        depth = 2
 
 class CreateTransactionSerializer(serializers.ModelSerializer):
     """JSON serializer for transactions
     """
     class Meta:
         model = Transactions
-        fields = ('id', 'card', 'card_holder', 'transaction_type', 'store', 'amount', 'transaction_date')
+        fields = ('id', 'card', 'transaction_type', 'store', 'amount', 'transaction_date')
