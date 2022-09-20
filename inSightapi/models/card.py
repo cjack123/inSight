@@ -1,5 +1,7 @@
 from django.db import models
 from inSightapi.models.card_holder import CardHolder
+from inSightapi.models.store import Store
+from inSightapi.models.category import Category
 
 
 class Card(models.Model):
@@ -10,4 +12,4 @@ class Card(models.Model):
     security_code = models.PositiveBigIntegerField()
     start_balance = models.DecimalField(max_digits=5, decimal_places=2)
     current_balance = models.DecimalField(max_digits=5, decimal_places=2)
-    QRcode = models.CharField(max_length=500)
+    category = models.ManyToManyField(Category, null=True)

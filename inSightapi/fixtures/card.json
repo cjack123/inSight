@@ -9,8 +9,7 @@
             "expiration_date": "2028-04-01",
             "security_code": 111,
             "start_balance": 1.00,
-            "current_balance": 1.00,
-            "QRcode": "Stretch"
+            "current_balance": 1.00
         }
     },
     {
@@ -23,8 +22,7 @@
             "expiration_date": "2028-06-01",
             "security_code": 211,
             "start_balance": 100.00,
-            "current_balance": 50.00,
-            "QRcode": "Stretch"
+            "current_balance": 50.00
         }
     },
     {
@@ -37,8 +35,7 @@
             "expiration_date": "2028-06-01",
             "security_code": 311,
             "start_balance": 70.00,
-            "current_balance": 50.00,
-            "QRcode": "Stretch"
+            "current_balance": 50.00
         }
     },
     {
@@ -51,8 +48,7 @@
             "expiration_date": "2028-08-01",
             "security_code": 311,
             "start_balance": 70.00,
-            "current_balance": 16.25,
-            "QRcode": "Stretch"
+            "current_balance": 16.25
         }
     }
 

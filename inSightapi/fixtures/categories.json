@@ -1,0 +1,30 @@
+[
+    {
+        "model": "inSightapi.category",
+        "pk": 1,
+        "fields": {
+            "label": "Leisure"
+        }
+    },
+    {
+        "model": "inSightapi.category",
+        "pk": 2,
+        "fields": {
+            "label": "Food"
+        }
+    },
+    {
+        "model": "inSightapi.category",
+        "pk": 3,
+        "fields": {
+            "label": "Movie"
+        }
+    },
+    {
+        "model": "inSightapi.category",
+        "pk": 4,
+        "fields": {
+            "label": "Retail"
+        }
+    }
+]
