@@ -10,6 +10,6 @@ class Transactions(models.Model):
     transaction_type = models.ForeignKey(TransactionType, on_delete=models.CASCADE)
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=5, decimal_places=2)
-    transaction_date = models.DateTimeField()
+    transaction_date = models.DateField()
 
 

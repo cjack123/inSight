@@ -37,8 +37,34 @@ class StoreView(ViewSet):
         serializer = StoreSerializer(store, many=True)
         return Response(serializer.data)
 
+    def create(self, request):
+        serializer = CreateStoreSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+    def update(self, request, pk):
+        store = Store.objects.get(pk=pk)
+        serializer = CreateStoreSerializer(store, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+    
+    def destroy(self, request, pk):
+        store = Store.objects.get(pk=pk)
+        store.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+
 class StoreSerializer(serializers.ModelSerializer):
     """JSON serializer for stores
+    """
+    class Meta:
+        model = Store
+        fields = ('id', 'name')
+
+class CreateStoreSerializer(serializers.ModelSerializer):
+    """JSON serializer for transactions
     """
     class Meta:
         model = Store

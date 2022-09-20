@@ -24,14 +24,15 @@ from inSightapi.views import StoreView
 from inSightapi.views import CardView
 from inSightapi.views import TransactionView
 from inSightapi.views import CardHolderView
-
+from inSightapi.views import CategoryView
 # routers
 router = routers.DefaultRouter(trailing_slash=False)
-router.register(r'types', TransactionTypeView, 'type')
+router.register(r'transactiontypes', TransactionTypeView, 'transactiontype')
 router.register(r'stores', StoreView, 'store')
 router.register(r'cards', CardView, 'card')
 router.register(r'cardholders', CardHolderView, 'cardholder')
 router.register(r'transactions', TransactionView, 'transaction')
+router.register(r'categories', CategoryView, 'category')
 
 
 urlpatterns = [

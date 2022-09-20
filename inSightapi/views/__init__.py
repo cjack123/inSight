@@ -4,3 +4,4 @@ from .store import StoreView
 from .card import CardView
 from .transaction import TransactionView
 from .card_holder import CardHolderView
+from .category import CategoryView
