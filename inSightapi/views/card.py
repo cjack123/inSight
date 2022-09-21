@@ -61,6 +61,15 @@ class CardView(ViewSet):
         serializer = CreateCardSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save(cardholder=cardholder)
+        
+        cardId = serializer.data['id']
+        card= Card.objects.get(pk=cardId )
+        categories =  request.data['category']
+        card.category.add(*categories)
+
+
+
+
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def update(self, request, pk):
@@ -82,7 +91,7 @@ class CardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Card
         fields = ('id', 'cardholder', 'card_number', 'card_type', 'expiration_date', 'security_code', 'start_balance', 'current_balance', 'category')
-        # depth = 1
+        depth = 1
 
 class CreateCardSerializer(serializers.ModelSerializer):
     """JSON serializer for card holders
