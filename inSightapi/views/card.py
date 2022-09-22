@@ -91,7 +91,7 @@ class CardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Card
         fields = ('id', 'cardholder', 'card_number', 'card_type', 'expiration_date', 'security_code', 'start_balance', 'current_balance', 'category')
-        depth = 1
+        # depth = 1
 
 class CreateCardSerializer(serializers.ModelSerializer):
     """JSON serializer for card holders
